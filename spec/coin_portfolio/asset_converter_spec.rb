@@ -13,11 +13,11 @@ describe CoinPortfolio::AssetConverter do
       expect(assets.size).to eq(2)
 
       asset_1 = assets[0]
-      expect(asset_1.amount).to eq(1)
+      expect(asset_1.count).to eq(1)
       expect(asset_1.price).to eq(CoinPortfolio::Money.new(amount: 4, currency: "EUR"))
 
       asset_2 = assets[1]
-      expect(asset_2.amount).to eq(2)
+      expect(asset_2.count).to eq(2)
       expect(asset_2.price).to eq(CoinPortfolio::Money.new(amount: 3.5, currency: "EUR"))
     end
   end

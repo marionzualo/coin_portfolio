@@ -22,17 +22,17 @@ module CoinPortfolio
 
     def initial_native_amount
       assets.reduce(0) do |sum, asset|
-        sum + asset.amount * asset.price.amount
+        sum + (asset.count * asset.price.amount)
       end
     end
 
     def final_native_amount(price)
-      asset_count * price.amount
+      total_asset_count * price.amount
     end
 
-    def asset_count
+    def total_asset_count
       assets.reduce(0) do |sum, asset|
-        sum + asset.amount
+        sum + asset.count
       end
     end
 

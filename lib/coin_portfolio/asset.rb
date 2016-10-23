@@ -1,3 +1,3 @@
 module CoinPortfolio
-  Asset = ImmutableStruct.new(:amount, :price)
+  Asset = ImmutableStruct.new(:count, :price)
 end

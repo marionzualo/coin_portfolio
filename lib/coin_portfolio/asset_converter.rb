@@ -10,7 +10,7 @@ module CoinPortfolio
         transaction_amount = transaction.amount.amount
         remaining_amount = transaction_amount - outgoing_amount
         if remaining_amount > 0
-          asset = Asset.new(amount: remaining_amount, price: transaction.price)
+          asset = Asset.new(count: remaining_amount, price: transaction.price)
           assets.push(asset)
         end
 
