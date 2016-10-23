@@ -1,3 +1,6 @@
 require "immutable-struct"
 require "coin_portfolio/liquidation"
+require "coin_portfolio/asset_converter"
+require "coin_portfolio/asset"
+require "coin_portfolio/transaction"
 require "coin_portfolio/version"
