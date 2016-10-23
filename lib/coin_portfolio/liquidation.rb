@@ -8,9 +8,11 @@ module CoinPortfolio
     def details(price)
       final_native_amount = final_native_amount(price)
       gain_percentage = (final_native_amount - initial_native_amount).to_f / initial_native_amount
+      currency = price.currency
+
       attributes = {
-        initial_native_amount: initial_native_amount,
-        final_native_amount: final_native_amount,
+        initial_native_amount: Money.new(amount: initial_native_amount, currency: currency),
+        final_native_amount: Money.new(amount: final_native_amount, currency: currency),
         gain_percentage: gain_percentage
       }
       Details.new(attributes)
@@ -20,12 +22,12 @@ module CoinPortfolio
 
     def initial_native_amount
       assets.reduce(0) do |sum, asset|
-        sum + asset.amount * asset.price
+        sum + asset.amount * asset.price.amount
       end
     end
 
     def final_native_amount(price)
-      asset_count * price
+      asset_count * price.amount
     end
 
     def asset_count

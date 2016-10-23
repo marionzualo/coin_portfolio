@@ -9,7 +9,8 @@ module CoinPortfolio
     end
 
     def price
-      native_amount.to_f / amount
+      price_f = native_amount.amount.to_f / amount.amount
+      CoinPortfolio::Money.new(amount: price_f, currency: native_amount.currency)
     end
 
     def incoming?
