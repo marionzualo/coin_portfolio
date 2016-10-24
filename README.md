@@ -12,6 +12,8 @@ percentage gains/losses, if the portfolio were to be fully liquidated now.
 The library tries to account for scenarios in which an account has multiple incoming and outgoing transactions with
 distinct prices.
 
+This is still a work in progress.
+
 ## Usage
 
 The library uses the Coinbase API to:
@@ -39,11 +41,18 @@ $ returns.final_native_amount.amount
 ## Improvements
 Until now the priority has been getting a working version therefore, there are still plenty of improvements to be made:
 - Naming - The names of a couple of classes/methods could be better. For instance, amount is a very common word in most
-of the code, even when it is representing different things (which is confusing at times).
+of the code, even when it is representing different things (which is confusing at times). AssetConverter#convert also
+deserves being revisited since it is probably the method with the most complexity.
 
 - API client - the code that interacts with coinbase's gem is isolated in a single class which translates
 response hashes into domain objects. Yet the code is tied to coinbase's gem and would require some changes if there was
-a need to integrate with another exchange.
+a need to integrate with another exchange. Additionally a proper handling of API related errors hasn't been
+implemented.
+
+- Multiple currencies - the code currently assumes that the user's account has a single cryptocurrency and that its
+transactions are all in the same native currency. This might not be true in all cases.
+
+- Calculator#potential_returns - it currently returns an object. Potentially it should `puts` something to the user.
 
 ## License
 MIT (c) Mário Nzualo
