@@ -26,6 +26,7 @@ The library uses the Coinbase API to:
 The API keys need to have the following permissions: `wallet:accounts:read`, `wallet:transactions:read`.
 
 ```ruby
+$ bundle exec rake console
 $ api_key = "key"
 $ api_secret = "secret"
 $ calculator = CoinPortfolio::Calculator.new(api_key: api_key, api_secret: api_secret)
