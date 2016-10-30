@@ -8,8 +8,8 @@ describe CoinPortfolio::Liquidation do
 
       details = described_class.new(inventory_items).details(price)
 
-      expect(details.initial_native_amount).to eq(CoinPortfolio::Money.new(amount: 12, currency: "EUR"))
-      expect(details.final_native_amount).to eq(CoinPortfolio::Money.new(amount: 90, currency: "EUR"))
+      expect(details.portfolio_cost).to eq(CoinPortfolio::Money.new(amount: 12, currency: "EUR"))
+      expect(details.current_portfolio_value).to eq(CoinPortfolio::Money.new(amount: 90, currency: "EUR"))
       expect(details.gain_percentage).to eq(6.5)
     end
   end

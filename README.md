@@ -32,9 +32,9 @@ $ calculator = CoinPortfolio::Calculator.new(api_key: api_key, api_secret: api_s
 $ returns = calculator.potential_returns
 $ returns.gain_percentage
 0.25
-$ returns.initial_native_amount.amount
+$ returns.portfolio_cost.amount
 100
-$ returns.final_native_amount.amount
+$ returns.current_portfolio_value.amount
 125
 ```
 

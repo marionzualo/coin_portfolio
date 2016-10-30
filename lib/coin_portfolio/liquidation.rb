@@ -1,18 +1,18 @@
 module CoinPortfolio
   class Liquidation
-    Details = ImmutableStruct.new(:initial_native_amount, :final_native_amount, :gain_percentage)
+    Details = ImmutableStruct.new(:portfolio_cost, :current_portfolio_value, :gain_percentage)
     def initialize(inventory_items)
       @inventory_items = inventory_items
     end
 
     def details(price)
-      final_native_amount = final_native_amount(price)
-      gain_percentage = (final_native_amount - initial_native_amount).to_f / initial_native_amount
+      current_portfolio_value = current_portfolio_value(price)
+      gain_percentage = (current_portfolio_value - portfolio_cost).to_f / portfolio_cost
       currency = price.currency
 
       attributes = {
-        initial_native_amount: Money.new(amount: initial_native_amount, currency: currency),
-        final_native_amount: Money.new(amount: final_native_amount, currency: currency),
+        portfolio_cost: Money.new(amount: portfolio_cost, currency: currency),
+        current_portfolio_value: Money.new(amount: current_portfolio_value, currency: currency),
         gain_percentage: gain_percentage
       }
       Details.new(attributes)
@@ -20,13 +20,13 @@ module CoinPortfolio
 
     private
 
-    def initial_native_amount
+    def portfolio_cost
       inventory_items.reduce(0) do |sum, item|
         sum + (item.quantity * item.cost.amount)
       end
     end
 
-    def final_native_amount(price)
+    def current_portfolio_value(price)
       total_item_quantity * price.amount
     end
 
