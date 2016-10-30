@@ -29,13 +29,10 @@ The API keys need to have the following permissions: `wallet:accounts:read`, `wa
 $ api_key = "key"
 $ api_secret = "secret"
 $ calculator = CoinPortfolio::Calculator.new(api_key: api_key, api_secret: api_secret)
-$ returns = calculator.potential_returns
-$ returns.gain_percentage
-0.25
-$ returns.portfolio_cost.amount
-100
-$ returns.current_portfolio_value.amount
-125
+$ calculator.potential_returns
+gains percentage: 25.00%
+portfolio cost: €100,00
+current portfolio value: €125,00
 ```
 
 ## Improvements

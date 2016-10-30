@@ -7,12 +7,21 @@ module CoinPortfolio
 
     def potential_returns
       liquidation = Liquidation.new(inventory_items)
-      liquidation.details(price)
+      details = liquidation.details(price)
+      puts "Gains percentage: #{format_percentage(details.gains_percentage)}"
+      puts "Portfolio cost: #{details.portfolio_cost}"
+      puts "Current portfolio value: #{details.current_portfolio_value}"
+      details
     end
 
     private
 
     attr_reader :api_key, :api_secret
+
+    def format_percentage(percentage)
+      rounded = (percentage * 100).round(2)
+      "#{sprintf("%.2f", rounded)}%"
+    end
 
     def inventory_items
       Inventory.new(transactions).build

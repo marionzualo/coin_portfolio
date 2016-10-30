@@ -34,4 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.4.0"
   spec.add_dependency "immutable-struct", "~> 2.2.2"
   spec.add_dependency "coinbase", "~> 4.1.0"
+  spec.add_dependency "money", "~> 6.7.1"
 end

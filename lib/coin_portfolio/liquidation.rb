@@ -1,19 +1,19 @@
 module CoinPortfolio
   class Liquidation
-    Details = ImmutableStruct.new(:portfolio_cost, :current_portfolio_value, :gain_percentage)
+    Details = ImmutableStruct.new(:portfolio_cost, :current_portfolio_value, :gains_percentage)
     def initialize(inventory_items)
       @inventory_items = inventory_items
     end
 
     def details(price)
       current_portfolio_value = current_portfolio_value(price)
-      gain_percentage = (current_portfolio_value - portfolio_cost).to_f / portfolio_cost
+      gains_percentage = (current_portfolio_value - portfolio_cost).to_f / portfolio_cost
       currency = price.currency
 
       attributes = {
         portfolio_cost: Money.new(amount: portfolio_cost, currency: currency),
         current_portfolio_value: Money.new(amount: current_portfolio_value, currency: currency),
-        gain_percentage: gain_percentage
+        gains_percentage: gains_percentage
       }
       Details.new(attributes)
     end

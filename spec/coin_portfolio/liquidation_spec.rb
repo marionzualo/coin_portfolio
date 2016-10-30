@@ -10,7 +10,7 @@ describe CoinPortfolio::Liquidation do
 
       expect(details.portfolio_cost).to eq(CoinPortfolio::Money.new(amount: 12, currency: "EUR"))
       expect(details.current_portfolio_value).to eq(CoinPortfolio::Money.new(amount: 90, currency: "EUR"))
-      expect(details.gain_percentage).to eq(6.5)
+      expect(details.gains_percentage).to eq(6.5)
     end
   end
 
