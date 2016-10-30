@@ -41,7 +41,7 @@ $ returns.final_native_amount.amount
 ## Improvements
 Until now the priority has been getting a working version therefore, there are still plenty of improvements to be made:
 - Naming - The names of a couple of classes/methods could be better. For instance, amount is a very common word in most
-of the code, even when it is representing different things (which is confusing at times). AssetConverter#convert also
+of the code, even when it is representing different things (which is confusing at times). Inventory#convert also
 deserves being revisited since it is probably the method with the most complexity.
 
 - API client - the code that interacts with coinbase's gem is isolated in a single class which translates

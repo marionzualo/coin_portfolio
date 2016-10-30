@@ -6,7 +6,7 @@ module CoinPortfolio
     end
 
     def potential_returns
-      liquidation = Liquidation.new(assets)
+      liquidation = Liquidation.new(inventory_items)
       liquidation.details(price)
     end
 
@@ -14,8 +14,8 @@ module CoinPortfolio
 
     attr_reader :api_key, :api_secret
 
-    def assets
-      AssetConverter.new(transactions).convert
+    def inventory_items
+      Inventory.new(transactions).build
     end
 
     def transactions
